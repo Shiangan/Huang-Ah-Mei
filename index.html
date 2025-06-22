@@ -560,29 +560,35 @@ document.addEventListener("DOMContentLoaded", () => {
 </section>
         
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 获取当前页面的 URL
-        var currentUrl = window.location.href;
+document.addEventListener("DOMContentLoaded", function () {
+  // 取得目前網址
+  var url = new URL(window.location.href);
 
-        // 获取当前页面的域名
-        var hostname = window.location.hostname;
+  // 刪除追蹤參數
+  url.searchParams.delete("fbclid");
+  url.searchParams.delete("utm_source");
+  url.searchParams.delete("utm_medium");
+  url.searchParams.delete("utm_campaign");
 
-        // 检查域名是否是 Punycode 形式（比如：xn--kpry57d）
-        if (hostname.includes("xn--")) {
-            // 替换 Punycode 域名为原始的 .台灣 域名
-            currentUrl = currentUrl.replace(hostname, "24hour.台灣");
-        }
+  // Punycode 處理
+  if (url.hostname.includes("xn--")) {
+    url.hostname = "24hour.台灣";
+  }
 
-        // 编码 URL，确保特殊字符不会被错误处理
-        var encodedUrl = encodeURIComponent(currentUrl);
+  // 編碼 URL
+  var encodedUrl = encodeURIComponent(url.toString());
 
-        // 动态更新 Facebook 分享链接
-        var fbShareLink = document.querySelector('.fb-share-btn');
-        fbShareLink.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+  // Facebook 分享
+  var fbShareLink = document.querySelector(".fb-share-btn");
+  if (fbShareLink) {
+    fbShareLink.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodedUrl;
+  }
 
-        // 动态更新 Line 分享链接
-        var lineShareLink = document.querySelector('.line-share-btn');
-        lineShareLink.href = "https://line.me/R/msg/text/?" + encodedUrl;
+  // LINE 分享
+  var lineShareLink = document.querySelector(".line-share-btn");
+  if (lineShareLink) {
+    lineShareLink.href = "https://line.me/R/msg/text/?" + encodedUrl;
+ ｝
         
         // 點擊名片圖片放大功能
     const cardImg = document.querySelector(".business-card-img");
