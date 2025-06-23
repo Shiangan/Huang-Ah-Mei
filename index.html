@@ -532,33 +532,32 @@ document.addEventListener("DOMContentLoaded", () => {
             </style>
         
          
-    
 <!-- 名片區 -->
 <section id="business-card">
-    <img src="image/未命名設計.png" alt="名片" class="business-card-img" loading="lazy">
+  <img src="image/未命名設計.png" alt="名片" class="business-card-img" loading="lazy">
 </section>
 
-  <!-- 分享按鈕區 -->
+<!-- 分享按鈕區 -->
 <section id="share-buttons">
-    <h2><strong>分享此頁面</strong></h2>
-    <div class="share-btns">
-        <!-- Facebook 分享按钮 -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://24hour.台灣/Huang-Ah-Mei/" 
-           target="_blank" 
-           class="share-btn fb-share-btn" 
-           aria-label="Share on Facebook">
-            <img src="image/fb.png" alt="Share on Facebook" loading="lazy">
-        </a>
-        <!-- Line 分享按钮 -->
-        <a href="https://line.me/R/msg/text/?https://24hour.台灣/Huang-Ah-Mei/" 
-           target="_blank" 
-           class="share-btn line-share-btn" 
-           aria-label="Share on Line">
-            <img src="image/line.png" alt="Share on Line" loading="lazy">
-        </a>
-    </div>
+  <h2><strong>分享此頁面</strong></h2>
+  <div class="share-btns">
+    <!-- Facebook 分享按钮 -->
+    <a href="#"
+       target="_blank"
+       class="share-btn fb-share-btn"
+       aria-label="Share on Facebook">
+      <img src="image/fb.png" alt="Share on Facebook" loading="lazy">
+    </a>
+    <!-- Line 分享按钮 -->
+    <a href="#"
+       target="_blank"
+       class="share-btn line-share-btn"
+       aria-label="Share on Line">
+      <img src="image/line.png" alt="Share on Line" loading="lazy">
+    </a>
+  </div>
 </section>
-        
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // 取得目前網址
@@ -588,43 +587,43 @@ document.addEventListener("DOMContentLoaded", function () {
   var lineShareLink = document.querySelector(".line-share-btn");
   if (lineShareLink) {
     lineShareLink.href = "https://line.me/R/msg/text/?" + encodedUrl;
- ｝
-        
-        // 點擊名片圖片放大功能
-    const cardImg = document.querySelector(".business-card-img");
-    if (cardImg) {
-        cardImg.addEventListener("click", function () {
-            const modal = document.createElement("div");
-            modal.style.position = "fixed";
-            modal.style.top = "0";
-            modal.style.left = "0";
-            modal.style.width = "100vw";
-            modal.style.height = "100vh";
-            modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-            modal.style.display = "flex";
-            modal.style.alignItems = "center";
-            modal.style.justifyContent = "center";
-            modal.style.zIndex = "1000";
+  }
 
-            const img = document.createElement("img");
-            img.src = cardImg.src;
-            img.alt = cardImg.alt;
-            img.style.maxWidth = "90%";
-            img.style.maxHeight = "90%";
-            img.style.borderRadius = "10px";
-            img.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.5)";
+  // 點擊名片圖片放大功能
+  const cardImg = document.querySelector(".business-card-img");
+  if (cardImg) {
+    cardImg.addEventListener("click", function () {
+      const modal = document.createElement("div");
+      modal.style.position = "fixed";
+      modal.style.top = "0";
+      modal.style.left = "0";
+      modal.style.width = "100vw";
+      modal.style.height = "100vh";
+      modal.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+      modal.style.display = "flex";
+      modal.style.alignItems = "center";
+      modal.style.justifyContent = "center";
+      modal.style.zIndex = "1000";
 
-            modal.appendChild(img);
-            document.body.appendChild(modal);
+      const img = document.createElement("img");
+      img.src = cardImg.src;
+      img.alt = cardImg.alt;
+      img.style.maxWidth = "90%";
+      img.style.maxHeight = "90%";
+      img.style.borderRadius = "10px";
+      img.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.5)";
+      img.style.cursor = "pointer";
 
-            // 點擊模態框關閉
-            modal.addEventListener("click", function () {
-                document.body.removeChild(modal);
-            });
-        });
-    }
+      modal.appendChild(img);
+      document.body.appendChild(modal);
+
+      // 點擊模態框或圖片關閉
+      modal.addEventListener("click", function () {
+        document.body.removeChild(modal);
+      });
+    });
+  }
 });
-
 </script>
 
 <style>
